@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 0 0% 100%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 46%;
+  }
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 0 0% 100%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+  }
+
+  html, body, #root { height: 100%; }
+
+  body {
+    @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))];
+  }
+  .dark select,
+  .dark select option {
+    color: hsl(var(--foreground));
+    background-color: #1f2937; /* gray-800 */
+  }
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-md px-3 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none; }
+  .btn-primary { @apply btn bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))] hover:opacity-90; }
+  .btn-ghost { @apply btn hover:bg-[hsl(var(--muted))]; }
+  .card { @apply rounded-lg border border-[hsl(var(--muted))] bg-white dark:bg-neutral-900 shadow-sm; }
+  .input { @apply w-full rounded-md border border-[hsl(var(--muted))] bg-white text-[hsl(var(--foreground))] dark:bg-neutral-800 dark:text-[hsl(var(--foreground))] px-3 py-2 outline-none focus:ring-2 focus:ring-accent; }
+  select.input { @apply appearance-none bg-[right_0.5rem_center] bg-no-repeat; }
+}
